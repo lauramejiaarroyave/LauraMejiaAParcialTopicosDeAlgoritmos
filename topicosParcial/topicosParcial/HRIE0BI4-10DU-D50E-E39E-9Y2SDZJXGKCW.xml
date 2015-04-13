@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Order xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2" xmlns:cac="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2" xmlns="urn:oasis:names:specification:ubl:schema:xsd:Order-2">
+<cbc:UBLVersionID>2.0</cbc:UBLVersionID>
+<cbc:ID>1387498480</cbc:ID>
+<cbc:CopyIndicator>false</cbc:CopyIndicator>
+<cbc:UUID>HRIE0BI4-10DU-D50E-E39E-9Y2SDZJXGKCW</cbc:UUID>
+<cbc:IssueDate>2013-2-23</cbc:IssueDate>
+<cbc:Note>sample</cbc:Note>
+
+<cac:BuyerCustomerParty>
+<cac:Party>
+<cac:PartyName>
+<cbc:Name>Vaffeljernet</cbc:Name>
+</cac:PartyName>
+<cac:PostalAddress>
+<cbc:PostalZone>8200</cbc:PostalZone>
+<cbc:CountrySubentity></cbc:CountrySubentity>
+<cac:AddressLine>
+<cac:Line>Smagsløget 45</cac:Line>
+</cac:AddressLine>
+<cac:Country>
+<cbc:Name>Dinamarca</cbc:Name>
+</cac:Country>
+</cac:PostalAddress>
+<cac:Contact>
+<cbc:Name>Palle Ibsen</cbc:Name><cbc:Telephone>86 21 32 43</cbc:Telephone><cbc:Telefax>86 22 33 44</cbc:Telefax><cbc:Note>Gerente de ventas</cbc:Note>
+</cac:Contact>
+</cac:Party>
+</cac:BuyerCustomerParty>
+
+<cac:SellerSupplierParty>
+<cac:Party>
+<cac:PartyName>
+<cbc:Name>Spécialités du monde</cbc:Name>
+</cac:PartyName>
+<cac:PostalAddress>
+<cbc:PostalZone>75016</cbc:PostalZone>
+<cbc:CountrySubentity></cbc:CountrySubentity>
+<cac:AddressLine>
+<cac:Line>25, rue Lauriston</cac:Line>
+</cac:AddressLine>
+<cac:Country>
+<cbc:Name>Francia</cbc:Name>
+</cac:Country>
+</cac:PostalAddress>
+<cac:Contact>
+<cbc:Name>Dominique Perrier</cbc:Name><cbc:Telephone>(1) 47.55.60.10</cbc:Telephone><cbc:Telefax>(1) 47.55.60.20</cbc:Telefax><cbc:Note>Gerente de marketing</cbc:Note>
+</cac:Contact>
+</cac:Party>
+</cac:BuyerCustomerParty>
+
+<cac:DeliveryTerms>
+<cbc:SpecialTerms>1％ deduction for late delivery as per contract</cbc:SpecialTerms>
+</cac:DeliveryTerms>
+
+<cac:TransactionConditions>
+<cbc:Description>order response required; payment is by BACS or by cheque</cbc:Description>
+</cac:TransactionConditions>
+
+<cac:AnticipatedMonetaryTotal>
+<cbc:LineExtensionAmount currencyID="GBP">994.65</cbc:LineExtensionAmount>
+<cbc:PayableAmount currencyID="GBP">994.65</cbc:PayableAmount>
+</cac:AnticipatedMonetaryTotal>
+
+<cac:OrderLine>
+<cac:LineItem>
+<cbc:Quantity unitCode="UND">29</cbc:Quantity>
+<cbc:LineExtensionAmount currencyID="USD">406.00<cbc:LineExtensionAmount>
+<cac:Price>
+<cbc:PriceAmount currencyID="USD">14</cbc:PriceAmount>
+<cbc:BaseQuantity unitCode="UND">1</cbc:BaseQuantity>
+</cac:Price>
+<cac:Item>
+<cbc:Description>Crema de chocolate y nueces NuNuCa</cbc:Description>
+</cac:Item>
+</cac:LineItem>
+</cac:OrderLine>
+
+<cac:OrderLine>
+<cac:LineItem>
+<cbc:Quantity unitCode="UND">61</cbc:Quantity>
+<cbc:LineExtensionAmount currencyID="USD">588.65<cbc:LineExtensionAmount>
+<cac:Price>
+<cbc:PriceAmount currencyID="USD">9,65</cbc:PriceAmount>
+<cbc:BaseQuantity unitCode="UND">1</cbc:BaseQuantity>
+</cac:Price>
+<cac:Item>
+<cbc:Description>Crema de almejas estilo Nueva Inglaterra</cbc:Description>
+</cac:Item>
+</cac:LineItem>
+</cac:OrderLine>
+
+
+</Order>
