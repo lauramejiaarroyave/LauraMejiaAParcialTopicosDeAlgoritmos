@@ -86,6 +86,7 @@
         for (CXMLElement *elemento in itemsDescriptionArray) {
             
             [descriptionArray addObject:[elemento stringValue]];
+        
         }
         
       //  NSLog(@"Elementos descriptionArray  %@\n", descriptionArray);

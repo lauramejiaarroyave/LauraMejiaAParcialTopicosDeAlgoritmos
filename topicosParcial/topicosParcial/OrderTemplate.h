@@ -15,7 +15,7 @@
 @interface OrderTemplate : NSObject
 
 
-@property long *ID;
+@property NSString *ID;
 @property NSString *UUID;
 @property NSString *issueDate;
 
@@ -32,7 +32,7 @@
 @property NSString *payableAmount;
 
 
--(id)initWithID:(long *)ID UUID:(NSString *)UUID issueDate:(NSString *)issueDate buyerCustomerParty:(Partie *)buyerCustomerParty sellerSupplierParty:(Partie *)sellerSupplierParty specialTerms:(NSString *)specialTerms orderDescription:(NSString *)orderDescription itemsArray:(NSMutableArray *)itemsArray  lineExtensionAmount:(NSString *)lineExtensionAmount  payableAmount:(NSString *)payableAmount;
+-(id)initWithID:(NSString *)ID UUID:(NSString *)UUID issueDate:(NSString *)issueDate buyerCustomerParty:(Partie *)buyerCustomerParty sellerSupplierParty:(Partie *)sellerSupplierParty specialTerms:(NSString *)specialTerms orderDescription:(NSString *)orderDescription itemsArray:(NSMutableArray *)itemsArray  lineExtensionAmount:(NSString *)lineExtensionAmount  payableAmount:(NSString *)payableAmount;
 
 
 

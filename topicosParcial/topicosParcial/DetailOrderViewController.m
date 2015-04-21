@@ -34,7 +34,7 @@
         
         if (i == (int)[_selected intValue]) {
             
-            _lblID.text=[NSString stringWithFormat:@"%d",(int)(dataOrder.ID)];
+            _lblID.text=dataOrder.ID;
             _lblUUID.text=dataOrder.UUID;
             _lblIssueD.text=dataOrder.issueDate;
             [_btnBuyer setTitle:dataOrder.buyerCustomerParty.partyName forState:UIControlStateNormal];

@@ -58,10 +58,15 @@
     ordersArray=[NSMutableArray array];
     
     for (int i=0; i<(int)_numberOrders; i++) {
-    
         
-   
-        long randomID = [self getRandomNumberBetween:1000000000 to: 9999999999];
+        NSString *randomID =[[NSString alloc]init];
+        
+
+
+        randomID=[NSString stringWithFormat:@"%ld", [self getRandomNumberBetween:1000000000 to: 9999999999]];
+        
+      
+       // randomID = [self getRandomNumberBetween:1000000000 to: 9999999999];
         
         NSString *vowels = @"ABCDEFGHIJKLMNOPQRSTUWXYZ12345678901234567890";
         
@@ -196,24 +201,25 @@
         
         NSString *payableAm= [NSString stringWithFormat:@"%.2f",sumatoriaOrderLines];
         
-       OrderTemplate *order =[[OrderTemplate alloc]initWithID:&randomID UUID:randomUUID issueDate:randomIssueDate buyerCustomerParty:randomBuyerCustomer sellerSupplierParty:randomSellerSupplier specialTerms:@"1% deduction for late delivery as per contract" orderDescription:@"order response required; payment is by BACS or by cheque<" itemsArray:orderLinesArray lineExtensionAmount:payableAm payableAmount:payableAm];
+    
+        OrderTemplate *order=[[OrderTemplate alloc]initWithID:randomID UUID:randomUUID issueDate:randomIssueDate buyerCustomerParty:randomBuyerCustomer sellerSupplierParty:randomSellerSupplier specialTerms:@"1% deduction for late delivery as per contract" orderDescription:@"order response required; payment is by BACS or by cheque<" itemsArray:orderLinesArray lineExtensionAmount:payableAm payableAmount:payableAm];
         
         
         [ordersArray addObject:order];
 
     
     
-        NSURL *url= [NSURL fileURLWithPath:[NSString stringWithFormat:@"Users/%@/%@.xml", CopiarAquiSuUsuarioDeMAC,randomUUID]];
+        NSURL *url= [NSURL fileURLWithPath:[NSString stringWithFormat:@"Users/%@/%@.xml", CopiarAquiSuUsuarioDeMAC,randomID]];
         
         
         
         
         NSString *newOrderTemp =[[NSString alloc]init];
 
-        newOrderTemp =[NSString stringWithFormat:@"<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<Order xmlns:cbc=\"urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2\" xmlns:cac=\"urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2\" xmlns=\"urn:oasis:names:specification:ubl:schema:xsd:Order-2\">\n<cbc:UBLVersionID>2.0</cbc:UBLVersionID>\n<cbc:ID>%d</cbc:ID>\n<cbc:CopyIndicator>false</cbc:CopyIndicator>\n<cbc:UUID>%@</cbc:UUID>\n<cbc:IssueDate>%@</cbc:IssueDate>\n<cbc:Note>sample</cbc:Note>\n\n<cac:BuyerCustomerParty>\n<cac:Party>\n<cac:PartyName>\n<cbc:Name>%@</cbc:Name>\n</cac:PartyName>\n<cac:PostalAddress>\n<cbc:PostalZone>%@</cbc:PostalZone>\n<cbc:CountrySubentity></cbc:CountrySubentity>\n<cac:AddressLine>\n<cac:Line>%@</cac:Line>\n</cac:AddressLine>\n<cac:Country>\n<cbc:Name>%@</cbc:Name>\n</cac:Country>\n</cac:PostalAddress>\n<cac:Contact>\n<cbc:Name>%@</cbc:Name><cbc:Telephone>%@</cbc:Telephone><cbc:Telefax>%@</cbc:Telefax><cbc:Note>%@</cbc:Note>\n</cac:Contact>\n</cac:Party>\n</cac:BuyerCustomerParty>\n\n<cac:SellerSupplierParty>\n<cac:Party>\n<cac:PartyName>\n<cbc:Name>%@</cbc:Name>\n</cac:PartyName>\n<cac:PostalAddress>\n<cbc:PostalZone>%@</cbc:PostalZone>\n<cbc:CountrySubentity></cbc:CountrySubentity>\n<cac:AddressLine>\n<cac:Line>%@</cac:Line>\n</cac:AddressLine>\n<cac:Country>\n<cbc:Name>%@</cbc:Name>\n</cac:Country>\n</cac:PostalAddress>\n<cac:Contact>\n<cbc:Name>%@</cbc:Name><cbc:Telephone>%@</cbc:Telephone><cbc:Telefax>%@</cbc:Telefax><cbc:Note>%@</cbc:Note>\n</cac:Contact>\n</cac:Party>\n</cac:SellerSupplierParty>\n\n<cac:DeliveryTerms>\n<cbc:SpecialTerms>1\uFF05 deduction for late delivery as per contract</cbc:SpecialTerms>\n</cac:DeliveryTerms>\n\n<cac:TransactionConditions>\n<cbc:Description>order response required; payment is by BACS or by cheque</cbc:Description>\n</cac:TransactionConditions>\n\n<cac:AnticipatedMonetaryTotal>\n<cbc:LineExtensionAmount currencyID=\"GBP\">%@</cbc:LineExtensionAmount>\n<cbc:PayableAmount currencyID=\"GBP\">%@</cbc:PayableAmount>\n</cac:AnticipatedMonetaryTotal>\n\n", (int)order.ID,order.UUID,order.issueDate,order.buyerCustomerParty.partyName,order.buyerCustomerParty.postalZone,order.buyerCustomerParty.partyLine, order.buyerCustomerParty.partyCountryName, order.buyerCustomerParty.contactName, order.buyerCustomerParty.contactTelephone, order.buyerCustomerParty.contactTelefax, order.buyerCustomerParty.contactNote,order.sellerSupplierParty.partyName,order.sellerSupplierParty.postalZone,order.sellerSupplierParty.partyLine, order.sellerSupplierParty.partyCountryName, order.sellerSupplierParty.contactName, order.sellerSupplierParty.contactTelephone, order.sellerSupplierParty.contactTelefax, order.sellerSupplierParty.contactNote, order.lineExtensionAmount, order.payableAmount];
+        newOrderTemp =[NSString stringWithFormat:@"<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<Order xmlns:cbc=\"urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2\" xmlns:cac=\"urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2\" xmlns=\"urn:oasis:names:specification:ubl:schema:xsd:Order-2\">\n<cbc:UBLVersionID>2.0</cbc:UBLVersionID>\n<cbc:ID>%@</cbc:ID>\n<cbc:CopyIndicator>false</cbc:CopyIndicator>\n<cbc:UUID>%@</cbc:UUID>\n<cbc:IssueDate>%@</cbc:IssueDate>\n<cbc:Note>sample</cbc:Note>\n\n<cac:BuyerCustomerParty>\n<cac:Party>\n<cac:PartyName>\n<cbc:Name>%@</cbc:Name>\n</cac:PartyName>\n<cac:PostalAddress>\n<cbc:PostalZone>%@</cbc:PostalZone>\n<cbc:CountrySubentity></cbc:CountrySubentity>\n<cac:AddressLine>\n<cac:Line>%@</cac:Line>\n</cac:AddressLine>\n<cac:Country>\n<cbc:Name>%@</cbc:Name>\n</cac:Country>\n</cac:PostalAddress>\n<cac:Contact>\n<cbc:Name>%@</cbc:Name><cbc:Telephone>%@</cbc:Telephone><cbc:Telefax>%@</cbc:Telefax><cbc:Note>%@</cbc:Note>\n</cac:Contact>\n</cac:Party>\n</cac:BuyerCustomerParty>\n\n<cac:SellerSupplierParty>\n<cac:Party>\n<cac:PartyName>\n<cbc:Name>%@</cbc:Name>\n</cac:PartyName>\n<cac:PostalAddress>\n<cbc:PostalZone>%@</cbc:PostalZone>\n<cbc:CountrySubentity></cbc:CountrySubentity>\n<cac:AddressLine>\n<cac:Line>%@</cac:Line>\n</cac:AddressLine>\n<cac:Country>\n<cbc:Name>%@</cbc:Name>\n</cac:Country>\n</cac:PostalAddress>\n<cac:Contact>\n<cbc:Name>%@</cbc:Name><cbc:Telephone>%@</cbc:Telephone><cbc:Telefax>%@</cbc:Telefax><cbc:Note>%@</cbc:Note>\n</cac:Contact>\n</cac:Party>\n</cac:SellerSupplierParty>\n\n<cac:DeliveryTerms>\n<cbc:SpecialTerms>1\uFF05 deduction for late delivery as per contract</cbc:SpecialTerms>\n</cac:DeliveryTerms>\n\n<cac:TransactionConditions>\n<cbc:Description>order response required; payment is by BACS or by cheque</cbc:Description>\n</cac:TransactionConditions>\n\n<cac:AnticipatedMonetaryTotal>\n<cbc:LineExtensionAmount currencyID=\"GBP\">%@</cbc:LineExtensionAmount>\n<cbc:PayableAmount currencyID=\"GBP\">%@</cbc:PayableAmount>\n</cac:AnticipatedMonetaryTotal>\n\n",order.ID,order.UUID,order.issueDate,order.buyerCustomerParty.partyName,order.buyerCustomerParty.postalZone,order.buyerCustomerParty.partyLine, order.buyerCustomerParty.partyCountryName, order.buyerCustomerParty.contactName, order.buyerCustomerParty.contactTelephone, order.buyerCustomerParty.contactTelefax, order.buyerCustomerParty.contactNote,order.sellerSupplierParty.partyName,order.sellerSupplierParty.postalZone,order.sellerSupplierParty.partyLine, order.sellerSupplierParty.partyCountryName, order.sellerSupplierParty.contactName, order.sellerSupplierParty.contactTelephone, order.sellerSupplierParty.contactTelefax, order.sellerSupplierParty.contactNote, order.lineExtensionAmount, order.payableAmount];
         
         
-       
+
         NSString *addOrderLine = [[NSString alloc]init];
         
         Item *dataItem;
@@ -225,6 +231,8 @@
 
             
             addOrderLine= [NSString stringWithFormat:@"%@<cac:OrderLine>\n<cac:LineItem>\n<cbc:Quantity unitCode=\"UND\">%@</cbc:Quantity>\n<cbc:LineExtensionAmount currencyID=\"USD\">%@</cbc:LineExtensionAmount>\n<cac:Price>\n<cbc:PriceAmount currencyID=\"USD\">%@</cbc:PriceAmount>\n<cbc:BaseQuantity unitCode=\"UND\">1</cbc:BaseQuantity>\n</cac:Price>\n<cac:Item>\n<cbc:Description>%@</cbc:Description>\n</cac:Item>\n</cac:LineItem>\n</cac:OrderLine>\n\n",addOrderLine, dataItem.quantity, dataItem.lineExtensionAmount,dataItem.priceAmount, dataItem.itemDescription];
+            
+
 
             
         }
@@ -236,7 +244,7 @@
         
         [newFileContent writeToURL:url atomically:YES encoding:NSUTF8StringEncoding error:nil];
         
-
+        randomID=@"x";
         
     }//Cierra el FOR de numberOrders
     
@@ -266,7 +274,7 @@
         [self dismissViewControllerAnimated:YES completion:nil];
 }
 
--(long)getRandomNumberBetween:(long)from to:(long)to {
+-(long)getRandomNumberBetween:(long*)from to:(long*)to {
     return (long)from + arc4random() % (to-from+1);
 }
 -(int)getRandomNumberIntBetween:(int)from to:(int)to {
